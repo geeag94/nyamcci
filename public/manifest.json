@@ -1,0 +1,18 @@
+{
+  "name": "냥씨 - 귀여운 날씨",
+  "short_name": "냥씨",
+  "description": "귀엽고 발랄한 날씨 정보",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F0F9FF",
+  "theme_color": "#60A5FA",
+  "orientation": "portrait",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
