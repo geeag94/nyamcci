@@ -13,14 +13,28 @@ export async function GET(request: NextRequest) {
   }
 
   const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(Math.floor(now.getMinutes() / 10) * 10).padStart(2, "0");
+  
+  // 초단기실황은 정시(00분) 단위로 생성
+  // 정시가 지나지 않았으면 한 시간 전 데이터 요청
+  let baseDate = new Date(now);
+  let baseHour = now.getHours();
+  
+  if (now.getMinutes() < 10) {
+    // 발표 후 약 10분 지나야 데이터 생성됨
+    baseHour -= 1;
+    if (baseHour < 0) {
+      baseHour = 23;
+      baseDate.setDate(baseDate.getDate() - 1);
+    }
+  }
+  
+  const year = baseDate.getFullYear();
+  const month = String(baseDate.getMonth() + 1).padStart(2, "0");
+  const day = String(baseDate.getDate()).padStart(2, "0");
+  const hours = String(baseHour).padStart(2, "0");
 
-  const baseDate = `${year}${month}${day}`;
-  const baseTime = `${hours}${minutes}`;
+  const baseDateStr = `${year}${month}${day}`;
+  const baseTime = `${hours}00`;
 
   const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY || "";
   
@@ -31,7 +45,7 @@ export async function GET(request: NextRequest) {
   url.searchParams.set("pageNo", "1");
   url.searchParams.set("numOfRows", "100");
   url.searchParams.set("dataType", "JSON");
-  url.searchParams.set("base_date", baseDate);
+  url.searchParams.set("base_date", baseDateStr);
   url.searchParams.set("base_time", baseTime);
   url.searchParams.set("nx", nx);
   url.searchParams.set("ny", ny);

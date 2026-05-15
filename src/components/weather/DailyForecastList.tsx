@@ -41,23 +41,25 @@ export default function DailyForecastList({ forecasts }: DailyForecastListProps)
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="flex items-center justify-between py-3 px-4 rounded-2xl bg-[#F0F9FF]"
+              className="grid grid-cols-3 items-center py-3 px-4 rounded-2xl bg-[#F0F9FF]"
             >
-              <span className="text-sm font-medium text-[#1E293B] w-20">
+              <span className="text-sm font-medium text-[#1E293B]">
                 {getDayName(forecast.date)}
               </span>
               
-              <div className="flex items-center gap-1">
-                <WeatherIcon condition={amCondition} size={28} animated={false} />
-                <span className="text-xs text-[#64748B]">오전</span>
+              <div className="flex items-center justify-center gap-4">
+                <div className="flex items-center gap-1.5">
+                  <WeatherIcon condition={amCondition} size={28} animated={false} />
+                  <span className="text-xs text-[#64748B] whitespace-nowrap">오전</span>
+                </div>
+                
+                <div className="flex items-center gap-1.5">
+                  <WeatherIcon condition={pmCondition} size={28} animated={false} />
+                  <span className="text-xs text-[#64748B] whitespace-nowrap">오후</span>
+                </div>
               </div>
               
-              <div className="flex items-center gap-1">
-                <WeatherIcon condition={pmCondition} size={28} animated={false} />
-                <span className="text-xs text-[#64748B]">오후</span>
-              </div>
-              
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center justify-end gap-2 text-sm">
                 <span className="font-semibold text-[#1E293B]">{forecast.maxTemp}°</span>
                 <span className="text-[#64748B]">{forecast.minTemp}°</span>
               </div>

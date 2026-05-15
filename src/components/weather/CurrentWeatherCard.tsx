@@ -34,7 +34,7 @@ export default function CurrentWeatherCard({ weather, locationName }: CurrentWea
         
         {/* 고양이 캐릭터 - 크게 표시 */}
         <div className="w-full flex justify-center -mt-4 -mb-6">
-          <CatCharacter condition={condition} size={220} animated />
+          <CatCharacter condition={condition} size={220} />
         </div>
         
         <motion.div 

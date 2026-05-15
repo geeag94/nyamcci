@@ -13,9 +13,6 @@ export async function GET(request: NextRequest) {
   }
 
   const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
   const hours = now.getHours();
 
   const announcementHours = [2, 5, 8, 11, 14, 17, 20, 23];
@@ -27,7 +24,18 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  const baseDate = `${year}${month}${day}`;
+  // 현재 시간이 가장 이른 발표시간(02시)보다 이르면 전날 23시 데이터 요청
+  let baseDate = new Date(now);
+  if (hours < announcementHours[0]) {
+    baseHour = 23;
+    baseDate.setDate(baseDate.getDate() - 1);
+  }
+
+  const year = baseDate.getFullYear();
+  const month = String(baseDate.getMonth() + 1).padStart(2, "0");
+  const day = String(baseDate.getDate()).padStart(2, "0");
+
+  const baseDateStr = `${year}${month}${day}`;
   const baseTime = `${String(baseHour).padStart(2, "0")}00`;
 
   const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY || "";
@@ -39,7 +47,7 @@ export async function GET(request: NextRequest) {
   url.searchParams.set("pageNo", "1");
   url.searchParams.set("numOfRows", "1000");
   url.searchParams.set("dataType", "JSON");
-  url.searchParams.set("base_date", baseDate);
+  url.searchParams.set("base_date", baseDateStr);
   url.searchParams.set("base_time", baseTime);
   url.searchParams.set("nx", nx);
   url.searchParams.set("ny", ny);
