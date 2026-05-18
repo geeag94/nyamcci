@@ -18,13 +18,13 @@ export default function CurrentWeatherCard({ weather, locationName }: CurrentWea
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4 }}
-      className="relative overflow-visible rounded-3xl bg-white p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+      className="relative overflow-visible rounded-3xl bg-card p-6 shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#60A5FA]/10 via-transparent to-[#F9A8D4]/10 rounded-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 rounded-3xl" />
       
       <div className="relative z-10 flex flex-col items-center">
         <motion.h2 
-          className="text-xl font-bold text-[#1E293B] mb-2"
+          className="text-xl font-bold text-foreground mb-2"
           initial={{ y: -10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -43,25 +43,25 @@ export default function CurrentWeatherCard({ weather, locationName }: CurrentWea
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="text-5xl font-bold text-[#1E293B] tracking-tight">
+          <div className="text-5xl font-bold text-foreground dark:text-white tracking-tight">
             {weather.temperature}°
           </div>
-          <div className="mt-1 text-base text-[#64748B] font-medium">
+          <div className="mt-1 text-base text-text-muted dark:text-gray-300 font-medium">
             {weather.precipitationType > 0
               ? getPrecipitationTypeText(weather.precipitationType)
               : getSkyConditionText(weather.skyCondition)}
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-3 gap-4 w-full mt-4 pt-4 border-t border-[#F0F9FF]">
+        <div className="grid grid-cols-3 gap-4 w-full mt-4 pt-4 border-t border-background">
           <motion.div 
             className="text-center"
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="text-xs text-[#64748B]">습도</div>
-            <div className="text-base font-semibold text-[#1E293B]">{weather.humidity}%</div>
+            <div className="text-xs text-text-muted dark:text-gray-400">습도</div>
+            <div className="text-base font-semibold text-foreground dark:text-white">{weather.humidity}%</div>
           </motion.div>
           <motion.div 
             className="text-center"
@@ -69,8 +69,8 @@ export default function CurrentWeatherCard({ weather, locationName }: CurrentWea
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <div className="text-xs text-[#64748B]">풍속</div>
-            <div className="text-base font-semibold text-[#1E293B]">{weather.windSpeed}m/s</div>
+            <div className="text-xs text-text-muted dark:text-gray-400">풍속</div>
+            <div className="text-base font-semibold text-foreground dark:text-white">{weather.windSpeed}m/s</div>
           </motion.div>
           <motion.div 
             className="text-center"
@@ -78,8 +78,8 @@ export default function CurrentWeatherCard({ weather, locationName }: CurrentWea
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            <div className="text-xs text-[#64748B]">강수량</div>
-            <div className="text-base font-semibold text-[#1E293B]">{weather.precipitation}mm</div>
+            <div className="text-xs text-text-muted dark:text-gray-400">강수량</div>
+            <div className="text-base font-semibold text-foreground dark:text-white">{weather.precipitation}mm</div>
           </motion.div>
         </div>
       </div>

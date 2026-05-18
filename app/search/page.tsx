@@ -26,13 +26,13 @@ export default function SearchPage() {
         className="flex flex-col gap-4"
       >
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#64748B]" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="도시 이름을 검색핳세요"
-            className="w-full pl-12 pr-4 py-3 rounded-2xl bg-white border-2 border-transparent focus:border-[#60A5FA] outline-none text-[#1E293B] placeholder:text-[#94A3B8] shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
+            placeholder="도시 이름을 검색하세요"
+            className="w-full pl-12 pr-4 py-3 rounded-2xl bg-card border-2 border-transparent focus:border-primary outline-none text-foreground dark:text-white placeholder:text-text-muted dark:placeholder:text-gray-400 shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
           />
         </div>
 
@@ -45,15 +45,15 @@ export default function SearchPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center justify-between p-4 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
+                className="flex items-center justify-between p-4 rounded-2xl bg-card shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
               >
                 <Link
                   href="/"
                   onClick={() => setLocation(loc)}
                   className="flex items-center gap-3 flex-1"
                 >
-                  <MapPin className="w-5 h-5 text-[#60A5FA]" />
-                  <span className="text-[#1E293B] font-medium">{loc.name}</span>
+                  <MapPin className="w-5 h-5 text-primary" />
+                  <span className="text-foreground font-medium">{loc.name}</span>
                 </Link>
                 <button
                   onClick={() =>
@@ -61,8 +61,8 @@ export default function SearchPage() {
                   }
                   className={`p-2 rounded-full transition-colors ${
                     fav
-                      ? "bg-[#FCA5A5]/10 text-[#FCA5A5]"
-                      : "bg-[#F0F9FF] text-[#94A3B8] hover:text-[#FCA5A5]"
+                      ? "bg-danger/10 text-danger"
+                      : "bg-background text-text-muted hover:text-danger"
                   }`}
                 >
                   <Heart className={`w-5 h-5 ${fav ? "fill-current" : ""}`} />

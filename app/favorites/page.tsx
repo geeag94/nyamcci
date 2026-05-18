@@ -18,17 +18,17 @@ export default function FavoritesPage() {
         animate={{ opacity: 1 }}
         className="flex flex-col gap-4"
       >
-        <h1 className="text-2xl font-bold text-[#1E293B]">즐겨찾기</h1>
+        <h1 className="text-2xl font-bold text-foreground dark:text-white">즐겨찾기</h1>
 
         {favorites.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 gap-4">
-            <div className="w-20 h-20 rounded-full bg-[#F0F9FF] flex items-center justify-center">
-              <MapPin className="w-10 h-10 text-[#94A3B8]" />
+            <div className="w-20 h-20 rounded-full bg-background flex items-center justify-center">
+              <MapPin className="w-10 h-10 text-text-muted" />
             </div>
-            <p className="text-[#64748B]">아직 즐겨찾기한 지역이 없어요</p>
+            <p className="text-text-muted dark:text-gray-400">아직 즐겨찾기한 지역이 없어요</p>
             <Link
               href="/search"
-              className="px-6 py-2 rounded-full bg-[#60A5FA] text-white font-medium hover:bg-[#3B82F6] transition-colors"
+              className="px-6 py-2 rounded-full bg-primary text-white font-medium hover:bg-blue-600 transition-colors"
             >
               지역 검색하기
             </Link>
@@ -41,23 +41,23 @@ export default function FavoritesPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center justify-between p-4 rounded-2xl bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
+                className="flex items-center justify-between p-4 rounded-2xl bg-card shadow-[0_2px_8px_rgba(0,0,0,0.05)]"
               >
                 <Link
                   href="/"
                   onClick={() => setLocation(favorite.location)}
                   className="flex items-center gap-3 flex-1"
                 >
-                  <div className="w-10 h-10 rounded-full bg-[#60A5FA]/10 flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-[#60A5FA]" />
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-[#1E293B] font-medium">
+                  <span className="text-foreground dark:text-white font-medium">
                     {favorite.location.name}
                   </span>
                 </Link>
                 <button
                   onClick={() => removeFavorite(favorite.id)}
-                  className="p-2 rounded-full hover:bg-[#FCA5A5]/10 text-[#94A3B8] hover:text-[#FCA5A5] transition-colors"
+                  className="p-2 rounded-full hover:bg-danger/10 text-text-muted hover:text-danger transition-colors"
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>

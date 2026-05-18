@@ -7,7 +7,7 @@ import MainLayout from "@/src/components/layout/MainLayout";
 const WeatherMap = dynamic(() => import("@/src/components/map/WeatherMap"), {
   ssr: false,
   loading: () => (
-    <div className="h-[60vh] rounded-3xl bg-white animate-pulse" />
+    <div className="h-[60vh] rounded-3xl bg-card animate-pulse" />
   ),
 });
 
@@ -21,7 +21,7 @@ export default function MapPage() {
   if (!mounted) {
     return (
       <MainLayout>
-        <div className="h-[60vh] rounded-3xl bg-white animate-pulse" />
+        <div className="h-[60vh] rounded-3xl bg-card animate-pulse" />
       </MainLayout>
     );
   }

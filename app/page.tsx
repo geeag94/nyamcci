@@ -155,10 +155,10 @@ export default function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center py-8 rounded-3xl bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
+            className="text-center py-8 rounded-3xl bg-card shadow-[0_4px_20px_rgba(0,0,0,0.05)]"
           >
-            <p className="text-[#64748B] text-lg">날씨 정보를 불러올 수 없어요</p>
-            <p className="text-sm text-[#94A3B8] mt-2">잠시 후 다시 시도해주세요</p>
+            <p className="text-text-muted dark:text-gray-300 text-lg">날씨 정보를 불러올 수 없어요</p>
+            <p className="text-sm text-text-muted dark:text-gray-400 mt-2">잠시 후 다시 시도해주세요</p>
           </motion.div>
         )}
 

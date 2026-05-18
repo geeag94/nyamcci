@@ -4,6 +4,9 @@
 @import "@fontsource/pretendard/600.css";
 @import "@fontsource/pretendard/700.css";
 
+/* Tailwind v4 class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --color-background: #F0F9FF;
   --color-foreground: #1E293B;
@@ -21,18 +24,62 @@
   --radius-3xl: 24px;
 }
 
-.dark {
-  --color-background: #0F172A;
-  --color-foreground: #F1F5F9;
+/* Dark mode overrides with high specificity */
+html.dark {
+  --color-background: #0B1120;
+  --color-foreground: #FFFFFF;
   --color-primary: #60A5FA;
   --color-secondary: #F9A8D4;
   --color-accent: #C4B5FD;
   --color-card: #1E293B;
-  --color-text: #F1F5F9;
-  --color-text-muted: #94A3B8;
+  --color-text: #FFFFFF;
+  --color-text-muted: #CBD5E1;
   --color-success: #86EFAC;
   --color-warning: #FDE047;
   --color-danger: #FCA5A5;
+}
+
+html.dark body {
+  background-color: #0B1120;
+  color: #FFFFFF;
+}
+
+/* Force white text for ALL text elements inside .dark */
+html.dark .text-foreground,
+html.dark .text-text,
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6,
+html.dark p,
+html.dark span:not([class*="text-primary"]):not([class*="text-danger"]),
+html.dark div[class*="text-foreground"],
+html.dark div[class*="text-5xl"],
+html.dark div[class*="text-3xl"],
+html.dark div[class*="text-2xl"],
+html.dark div[class*="text-xl"],
+html.dark div[class*="text-lg"],
+html.dark div[class*="text-base"],
+html.dark div[class*="text-sm"],
+html.dark .font-bold,
+html.dark .font-semibold,
+html.dark .font-medium {
+  color: #FFFFFF !important;
+}
+
+html.dark .text-text-muted,
+html.dark .text-xs {
+  color: #CBD5E1 !important;
+}
+
+html.dark .bg-card {
+  background-color: #1E293B;
+}
+
+html.dark .bg-background {
+  background-color: #0B1120;
 }
 
 body {

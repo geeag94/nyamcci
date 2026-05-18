@@ -12,13 +12,25 @@ export const metadata: Metadata = {
     icon: "/icons/icon.svg",
     apple: "/icons/icon.svg",
   },
+  appleWebApp: {
+    capable: true,
+    title: "냥씨",
+    statusBarStyle: "default",
+  },
+  applicationName: "냥씨",
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  themeColor: "#60A5FA",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#60A5FA" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B1120" },
+  ],
 };
 
 export default function RootLayout({
@@ -28,7 +40,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="h-full">
-      <body className="min-h-screen h-full bg-[#F0F9FF] font-sans">
+      <head>
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="냥씨" />
+        <meta name="msapplication-TileColor" content="#60A5FA" />
+        <meta name="msapplication-tap-highlight" content="no" />
+      </head>
+      <body className="min-h-screen h-full bg-background font-sans">
         <ServiceWorkerRegister />
         <PushProvider>
           <NetworkStatusProvider>{children}</NetworkStatusProvider>

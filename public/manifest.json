@@ -8,11 +8,39 @@
   "theme_color": "#60A5FA",
   "orientation": "portrait",
   "scope": "/",
+  "categories": ["weather", "utilities"],
+  "lang": "ko",
   "icons": [
     {
       "src": "/icons/icon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "날씨 메인 화면"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "지역 검색",
+      "short_name": "검색",
+      "description": "다른 지역의 날씨 검색",
+      "url": "/search",
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "지도",
+      "short_name": "지도",
+      "description": "날씨 지도 보기",
+      "url": "/map",
+      "icons": [{ "src": "/icons/icon.svg", "sizes": "any" }]
     }
   ]
 }
