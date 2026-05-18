@@ -2,6 +2,7 @@
 
 import { Search, MapPin } from "lucide-react";
 import ThemeToggle from "@/src/components/common/ThemeToggle";
+import ShareButton from "@/src/components/common/ShareButton";
 import { useLocationStore } from "@/src/stores/locationStore";
 import Link from "next/link";
 
@@ -18,6 +19,7 @@ export default function Header() {
           </span>
         </div>
         <div className="flex items-center gap-2">
+          <ShareButton />
           <ThemeToggle />
           <Link
             href="/search"

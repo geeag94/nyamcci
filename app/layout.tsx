@@ -21,6 +21,26 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
+  openGraph: {
+    title: "냥씨 - 귀여운 날씨",
+    description: "귀엽고 발랄한 날씨 정보를 확인해보세요!",
+    type: "website",
+    locale: "ko_KR",
+    images: [
+      {
+        url: "/icons/icon.svg",
+        width: 512,
+        height: 512,
+        alt: "냥씨 앱 아이콘",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "냥씨 - 귀여운 날씨",
+    description: "귀엽고 발랄한 날씨 정보를 확인해보세요!",
+    images: ["/icons/icon.svg"],
+  },
 };
 
 export const viewport: Viewport = {
